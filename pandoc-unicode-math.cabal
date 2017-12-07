@@ -1,0 +1,25 @@
+name:                pandoc-unicode-math
+version:             1.0.0
+synopsis:            Replace Unicode symbols by equivalent Latex commands
+description:         A Pandoc filter that replaces Unicode math symbols and
+                     greek letters like ∀, ∈, →, λ, or Ω in math environments
+                     by equivalent Latex commands like \forall, \in,
+                     \rightarrow, \lambda, or \Omega. That leads to readable
+                     math expressions in both Markdown and PDF.
+homepage:            https://github.com/marhop/pandoc-unicode-math
+license:             BSD3
+license-file:        LICENSE
+author:              Martin Hoppenheit
+maintainer:          martin@hoppenheit.info
+copyright:           2017 Martin Hoppenheit
+category:            Text
+build-type:          Simple
+cabal-version:       >=1.10
+extra-source-files:  README.md
+
+executable pandoc-unicode-math
+  hs-source-dirs:      src
+  main-is:             Main.hs
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5
+                     , pandoc-types
