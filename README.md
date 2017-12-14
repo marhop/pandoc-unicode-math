@@ -1,14 +1,16 @@
 # pandoc-unicode-math
 
 If you prefer Markdown to Latex because of its readability, then why not
-improve the readability of math expressions as well?
+improve the readability of math expressions as well? Just use the power of
+Unicode!
 
 ## What does this filter do?
 
 This [Pandoc] [filter] replaces Unicode math symbols and greek letters like ∀,
 ∈, →, λ, or Ω in math environments by equivalent Latex commands like
 `\forall`, `\in`, `\rightarrow`, `\lambda`, or `\Omega`. That means you can
-write expressions like these in Markdown:
+write expressions like these in Markdown and still get Latex's superior math
+typesetting when converting to PDF:
 
     α → β ≡ ¬α ∨ β ≡ ¬(α ∧ ¬β)
 
