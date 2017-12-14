@@ -18,11 +18,9 @@ write expressions like these in Markdown:
 
 Now compare them to the same expressions written with Latex commands:
 
-    \alpha \rightarrow \beta \equiv \neg \alpha \lor \beta
-    \equiv \neg (\alpha \land \neg \beta)
+    \alpha \rightarrow \beta \equiv \neg \alpha \lor \beta \equiv \neg (\alpha \land \neg \beta)
 
-    \forall x \in \{ 2, 4, \dots \}, \forall y \in \mathbb{N} :
-    (x \cdot y) mod 2 = 0
+    \forall x \in \{ 2, 4, \dots \}, \forall y \in \mathbb{N} : (x \cdot y) mod 2 = 0
 
     \mathbb{N} \subset \mathbb{Z} \subset \mathbb{R}
 
