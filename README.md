@@ -33,15 +33,14 @@ A complete list of symbols that are replaced by this filter can be found in the
 
 ## Usage
 
- 1. Write a Markdown document containing Unicode characters like the provided
+ 1. Get a binary [here][releases] and put it in your [PATH]. If necessary, you
+    can instead build from source (see below).
+ 2. Write a Markdown document containing Unicode characters like the provided
     [example file](example.md).
- 2. Invoke Pandoc to convert the Markdown document to PDF and apply the filter
+ 3. Invoke Pandoc to convert the Markdown document to PDF and apply the filter
     along the way:
 
         $ pandoc example.md --filter pandoc-unicode-math -o example.pdf
-
-    (This command expects an executable binary `pandoc-unicode-math` in your
-    [PATH].)
 
 ## But my keyboard has no "α" and "∃" keys!
 
@@ -60,8 +59,31 @@ expression:
 
     ∃ x ∈ ℕ : \frac{x}{2} = 21
 
+## Building from source
+
+This filter is written in Haskell. It is recommended to use [Stack] for
+building. Install Stack, clone the Git repository, change to its top level
+directory and run the following commands:
+
+    $ stack setup
+    $ stack build
+    $ stack install
+
+On Linux, this will install the `pandoc-unicode-math` filter to `~/.local/bin/`
+and on Windows, well, I don't know but surely somewhere sensible.
+
+Maybe you would like to adapt the [`stack.yaml`](stack.yaml) file prior to
+building to select a [Stackage] snapshot that fits your environment. For
+example, use `resolver: lts-7.24` to create a binary that is compatible with
+Pandoc 1.17 (shipped with Debian 9) or `resolver: lts-9.21` for Pandoc 1.19
+(there was an API change somewhere around 1.18 so you need different binaries).
+I haven't tried Pandoc 2 yet.
+
 [Pandoc]: https://pandoc.org/
 [filter]: https://pandoc.org/filters.html
+[releases]: https://github.com/marhop/pandoc-unicode-math/releases
 [PATH]: https://en.wikipedia.org/wiki/PATH_(variable)
 [digraphs]: http://vimdoc.sourceforge.net/htmldoc/digraph.html
 [characterize plugin]: https://github.com/tpope/vim-characterize
+[Stack]: https://docs.haskellstack.org/
+[Stackage]: https://www.stackage.org/
