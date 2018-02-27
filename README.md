@@ -28,8 +28,20 @@ Now compare them to the same expressions written with Latex commands:
 
 If you prefer the Unicode variant, this filter is for you!
 
-A complete list of symbols that are replaced by this filter can be found in
-the `src/Main.hs` file.
+A complete list of symbols that are replaced by this filter can be found in the
+[`src/Main.hs`](src/Main.hs) file.
+
+## Usage
+
+ 1. Write a Markdown document containing Unicode characters like the provided
+    [example file](example.md).
+ 2. Invoke Pandoc to convert the Markdown document to PDF and apply the filter
+    along the way:
+
+        $ pandoc example.md --filter pandoc-unicode-math -o example.pdf
+
+    (This command expects an executable binary `pandoc-unicode-math` in your
+    [PATH].)
 
 ## But my keyboard has no "α" and "∃" keys!
 
@@ -50,5 +62,6 @@ expression:
 
 [Pandoc]: https://pandoc.org/
 [filter]: https://pandoc.org/filters.html
+[PATH]: https://en.wikipedia.org/wiki/PATH_(variable)
 [digraphs]: http://vimdoc.sourceforge.net/htmldoc/digraph.html
 [characterize plugin]: https://github.com/tpope/vim-characterize
