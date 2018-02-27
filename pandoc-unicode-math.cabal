@@ -16,6 +16,8 @@ category:            Text
 build-type:          Simple
 cabal-version:       >=1.10
 extra-source-files:  README.md
+                   , example.md
+                   , stack.yaml
 
 executable pandoc-unicode-math
   hs-source-dirs:      src
