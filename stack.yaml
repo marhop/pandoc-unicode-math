@@ -1,14 +1,16 @@
-# Stackage resolver lts-7.24 matches Debian 9 Stretch quite well (GHC 8.0.1,
-# Pandoc 1.17.{1,2}). However, building with stack on Debian 9 fails unless
-# the following settings are configured in
-# `~/.stack/programs/x86_64-linux/ghc-8.0.1/lib/ghc-8.0.1/settings`:
+# For compatibility with Pandoc ≥ 1.19 and Pandoc 2 (pandoc-types 1.17).
+resolver: lts-9.21
+
+# For compatibility with Pandoc ≤ 1.17 (pandoc-types 1.16). This is shipped with
+# Debian 9.
+#
+# N.B., building with stack on Debian 9 fails unless
+# `~/.stack/programs/x86_64-linux/ghc-8.0.1/lib/ghc-8.0.1/settings` contains the
+# following settings:
 # 
 #     ("C compiler flags", " -fno-PIE -fno-stack-protector"),
 #     ("C compiler link flags", " -no-pie"),
 #     ("ld flags", " -no-pie"),
 # 
 # See <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=844598>.
-resolver: lts-7.24
-
-# Pandoc 1.19.2.4
-#resolver: lts-9.21
+#resolver: lts-7.24

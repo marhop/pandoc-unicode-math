@@ -75,9 +75,9 @@ and on Windows, well, I don't know but surely somewhere sensible.
 Maybe you would like to adapt the [`stack.yaml`](stack.yaml) file prior to
 building to select a [Stackage] snapshot that fits your environment. For
 example, use `resolver: lts-7.24` to create a binary that is compatible with
-Pandoc 1.17 (shipped with Debian 9) or `resolver: lts-9.21` for Pandoc 1.19
-(there was an API change somewhere around 1.18 so you need different binaries).
-I haven't tried Pandoc 2 yet.
+Pandoc 1.17 (shipped with Debian 9) or `resolver: lts-9.21` for Pandoc 1.19 and
+later, including Pandoc 2 (there was an API change between 1.17 and 1.19, so you
+need different binaries).
 
 [Pandoc]: https://pandoc.org/
 [filter]: https://pandoc.org/filters.html
