@@ -1,6 +1,6 @@
-# Notes concerning the $λ$ calculus
+# Notes concerning the λ-calculus
 
-$λ$ terms:
+λ terms:
 
   * Variable: $x$
   * Abstraction: $(λ x . M)$
@@ -8,8 +8,8 @@ $λ$ terms:
 
 Reduction operations:
 
-  * $α$ reduction: $λ x . M → λ y . [y/x]M$
-  * $β$ reduction: $(λ x . M)N → [N/x]M$
+  * α reduction: $λ x . M → λ y . [y/x]M$
+  * β reduction: $(λ x . M)N → [N/x]M$
 
 Church numerals:
 
