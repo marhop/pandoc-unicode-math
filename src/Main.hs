@@ -7,21 +7,21 @@ main = toJSONFilter unicodeToLatex
 
 unicodeToLatex :: Inline -> [Inline]
 unicodeToLatex (Math t e) = [Math t (concatMap sym e)]
-unicodeToLatex (Str s) = foldr g [] $ map f s
+unicodeToLatex (Str s) = foldr merge [] $ map (wrap sym) s
 unicodeToLatex x = [x]
 
-f :: Char -> Inline
-f c =
-    let c' = sym c
+wrap :: (Char -> String) -> Char -> Inline
+wrap f c =
+    let c' = f c
     in if [c] == c'
            then Str c'
            else Math InlineMath c'
 
-g :: Inline -> [Inline] -> [Inline]
-g (Str s1) ((Str s2):xs) = Str (s1 ++ s2) : xs
-g (Math InlineMath e1) ((Math InlineMath e2):xs) =
+merge :: Inline -> [Inline] -> [Inline]
+merge (Str s1) ((Str s2):xs) = Str (s1 ++ s2) : xs
+merge (Math InlineMath e1) ((Math InlineMath e2):xs) =
     Math InlineMath (e1 ++ e2) : xs
-g x xs = x : xs
+merge x xs = x : xs
 
 sym :: Char -> String
 sym '¬' = "\\neg"
