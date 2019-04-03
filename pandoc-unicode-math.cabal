@@ -24,4 +24,5 @@ executable pandoc-unicode-math
   main-is:             Main.hs
   default-language:    Haskell2010
   build-depends:       base
+                     , containers
                      , pandoc-types
