@@ -1,5 +1,4 @@
-# For compatibility with Pandoc ≥ 1.19 and Pandoc 2 (pandoc-types 1.17).
-resolver: lts-9.21
+resolver: lts-13.15
 
 # For compatibility with Pandoc ≤ 1.17 (pandoc-types 1.16). This is shipped with
 # Debian 9.
