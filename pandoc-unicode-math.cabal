@@ -26,3 +26,4 @@ executable pandoc-unicode-math
   build-depends:       base
                      , containers
                      , pandoc-types
+                     , pcre-heavy

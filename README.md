@@ -62,8 +62,14 @@ expression:
 ## Building from source
 
 This filter is written in Haskell. It is recommended to use [Stack] for
-building. Install Stack, clone the Git repository, change to its top level
-directory and run the following commands:
+building. Install Stack, the [pkg-config] tool and the [PCRE] library (these are
+required by one of the used Haskell libraries, namely the pcre-heavy package).
+On Debian:
+
+    # apt install haskell-stack pkg-config libpcre++-dev
+
+Then clone the Git repository, change to its top level directory and run the
+following commands:
 
     $ stack setup
     $ stack build
@@ -87,3 +93,5 @@ need different binaries).
 [characterize plugin]: https://github.com/tpope/vim-characterize
 [Stack]: https://docs.haskellstack.org/
 [Stackage]: https://www.stackage.org/
+[pkg-config]: https://www.freedesktop.org/wiki/Software/pkg-config/
+[PCRE]: https://pcre.org/

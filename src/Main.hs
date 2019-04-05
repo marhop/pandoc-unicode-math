@@ -1,23 +1,51 @@
+{-# LANGUAGE QuasiQuotes #-}
+
 module Main where
 
-import qualified Data.Map.Strict as Map
+import Data.Map.Strict (Map, findWithDefault, fromList)
 import Text.Pandoc.JSON (Inline(Math), toJSONFilter)
+import Text.Regex.PCRE.Heavy (Regex, gsub, re)
 
 main :: IO ()
 main = toJSONFilter unicodeMath
 
 unicodeMath :: Inline -> Inline
 unicodeMath (Math t e) = Math t (unicodeToLatex e)
+-- TODO Make available to user.
+-- unicodeMath (Math t e) = Math t (latexToUnicode e)
 unicodeMath x = x
 
+-- | Replace Unicode math symbols in a string by equivalent Latex commands.
+-- Examples:
+--
+--   * α → \alpha
+--   * ℕ → \mathbb{N}
+--   * Α → A (greek Alpha to latin A), ugly but that's how Latex handles it
 unicodeToLatex :: String -> String
-unicodeToLatex = concatMap (\x -> Map.findWithDefault [x] x unicodeToLatexMap)
+unicodeToLatex = concatMap (\x -> findWithDefault [x] x unicodeToLatexMap)
 
-unicodeToLatexMap :: Map.Map Char String
-unicodeToLatexMap = Map.fromList sym
+-- | Map from Unicode symbols to Latex commands.
+unicodeToLatexMap :: Map Char String
+unicodeToLatexMap = fromList symbols
 
-sym :: [(Char, String)]
-sym =
+-- | Replace Latex math commands by equivalent Unicode symbols. Examples:
+--
+--   * \alpha → α
+--   * \mathbb{N} → ℕ
+--   * but /not/ A → Α (latin A to greek Alpha) because that's ambiguous
+latexToUnicode :: String -> String
+latexToUnicode = gsub latexCommand (\x -> findWithDefault x x latexToUnicodeMap)
+
+-- | Map from Latex commands to Unicode symbols.
+latexToUnicodeMap :: Map String String
+latexToUnicodeMap = fromList [(y, [x]) | (x, y) <- symbols]
+
+-- | Regex describing a latex command like "\alpha" or "\mathbb{N}".
+latexCommand :: Regex
+latexCommand = [re|\\\w+(?:\{\w+\})?|]
+
+symbols :: [(Char, String)]
+symbols =
     [ ('¬', "\\neg")
     , ('±', "\\pm")
     , ('×', "\\times")
