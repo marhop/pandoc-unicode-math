@@ -1,19 +1,26 @@
 {-# LANGUAGE QuasiQuotes #-}
 
-module Main where
+module PandocUnicodeMath
+    ( Direction(..)
+    , unicodeMath
+    ) where
 
 import Data.Map.Strict (Map, findWithDefault, fromList)
-import Text.Pandoc.JSON (Inline(Math), toJSONFilter)
+import Text.Pandoc.JSON (Inline(Math))
 import Text.Regex.PCRE.Heavy (Regex, gsub, re)
 
-main :: IO ()
-main = toJSONFilter unicodeMath
+-- | Replace Unicode symbols in math environments by equivalent Latex commands
+-- or vice versa. Leave non-math content unchanged.
+unicodeMath :: Direction -> Inline -> Inline
+unicodeMath UnicodeToLatex (Math t e) = Math t (unicodeToLatex e)
+unicodeMath LatexToUnicode (Math t e) = Math t (latexToUnicode e)
+unicodeMath _ x = x
 
-unicodeMath :: Inline -> Inline
-unicodeMath (Math t e) = Math t (unicodeToLatex e)
--- TODO Make available to user.
--- unicodeMath (Math t e) = Math t (latexToUnicode e)
-unicodeMath x = x
+-- | Direction of the Pandoc filter, either replacing Unicode symbols by Latex
+-- commands or Latex commands by Unicode symbols.
+data Direction
+    = UnicodeToLatex
+    | LatexToUnicode
 
 -- | Replace Unicode math symbols in a string by equivalent Latex commands.
 -- Examples:

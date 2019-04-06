@@ -19,11 +19,26 @@ extra-source-files:  README.md
                    , example.md
                    , stack.yaml
 
+-- Calling this pandoc-unicode-math-to-latex would neither be pretty nor
+-- backwards compatible.
 executable pandoc-unicode-math
-  hs-source-dirs:      src
-  main-is:             Main.hs
-  default-language:    Haskell2010
-  build-depends:       base
-                     , containers
-                     , pandoc-types
-                     , pcre-heavy
+  hs-source-dirs:    src
+  main-is:           UnicodeToLatex.hs
+  ghc-options:       -main-is UnicodeToLatex
+  build-depends:     base
+                   , containers
+                   , pandoc-types
+                   , pcre-heavy
+  other-modules:     PandocUnicodeMath
+  default-language:  Haskell2010
+
+executable pandoc-unicode-math-from-latex
+  hs-source-dirs:    src
+  main-is:           LatexToUnicode.hs
+  ghc-options:       -main-is LatexToUnicode
+  build-depends:     base
+                   , containers
+                   , pandoc-types
+                   , pcre-heavy
+  other-modules:     PandocUnicodeMath
+  default-language:  Haskell2010
