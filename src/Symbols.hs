@@ -1,55 +1,17 @@
-{-# LANGUAGE QuasiQuotes #-}
-
-module PandocUnicodeMath
-    ( Direction(..)
-    , unicodeMath
+module Symbols
+    ( unicodeToLatexMap
+    , latexToUnicodeMap
     ) where
 
-import Data.Map.Strict (Map, findWithDefault, fromList)
-import Text.Pandoc.JSON (Inline(Math))
-import Text.Regex.PCRE.Heavy (Regex, gsub, re)
-
--- | Replace Unicode symbols in math environments by equivalent Latex commands
--- or vice versa. Leave non-math content unchanged.
-unicodeMath :: Direction -> Inline -> Inline
-unicodeMath UnicodeToLatex (Math t e) = Math t (unicodeToLatex e)
-unicodeMath LatexToUnicode (Math t e) = Math t (latexToUnicode e)
-unicodeMath _ x = x
-
--- | Direction of the Pandoc filter, either replacing Unicode symbols by Latex
--- commands or Latex commands by Unicode symbols.
-data Direction
-    = UnicodeToLatex
-    | LatexToUnicode
-
--- | Replace Unicode math symbols in a string by equivalent Latex commands.
--- Examples:
---
---   * α → \alpha
---   * ℕ → \mathbb{N}
---   * Α → A (greek Alpha to latin A), ugly but that's how Latex handles it
-unicodeToLatex :: String -> String
-unicodeToLatex = concatMap (\x -> findWithDefault [x] x unicodeToLatexMap)
+import Data.Map.Strict (Map, fromList)
 
 -- | Map from Unicode symbols to Latex commands.
 unicodeToLatexMap :: Map Char String
 unicodeToLatexMap = fromList symbols
 
--- | Replace Latex math commands by equivalent Unicode symbols. Examples:
---
---   * \alpha → α
---   * \mathbb{N} → ℕ
---   * but /not/ A → Α (latin A to greek Alpha) because that's ambiguous
-latexToUnicode :: String -> String
-latexToUnicode = gsub latexCommand (\x -> findWithDefault x x latexToUnicodeMap)
-
 -- | Map from Latex commands to Unicode symbols.
 latexToUnicodeMap :: Map String String
 latexToUnicodeMap = fromList [(y, [x]) | (x, y) <- symbols]
-
--- | Regex describing a latex command like "\alpha" or "\mathbb{N}".
-latexCommand :: Regex
-latexCommand = [re|\\\w+(?:\{\w+\})?|]
 
 symbols :: [(Char, String)]
 symbols =

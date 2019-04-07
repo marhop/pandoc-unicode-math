@@ -28,8 +28,8 @@ executable pandoc-unicode-math
   build-depends:     base
                    , containers
                    , pandoc-types
-                   , pcre-heavy
-  other-modules:     PandocUnicodeMath
+  other-modules:     MathFilter
+                   , Symbols
   default-language:  Haskell2010
 
 executable pandoc-unicode-math-from-latex
@@ -40,5 +40,6 @@ executable pandoc-unicode-math-from-latex
                    , containers
                    , pandoc-types
                    , pcre-heavy
-  other-modules:     PandocUnicodeMath
+  other-modules:     MathFilter
+                   , Symbols
   default-language:  Haskell2010
