@@ -5,7 +5,8 @@ description:         A Pandoc filter that replaces Unicode math symbols and
                      greek letters like ∀, ∈, →, λ, or Ω in math environments
                      by equivalent Latex commands like \forall, \in,
                      \rightarrow, \lambda, or \Omega. That leads to readable
-                     math expressions in both Markdown and PDF.
+                     math expressions in both Markdown and PDF. And another
+                     filter that does the reverse.
 homepage:            https://github.com/marhop/pandoc-unicode-math
 license:             BSD3
 license-file:        LICENSE

@@ -29,11 +29,11 @@ Now compare them to the same expressions written with Latex commands:
 If you prefer the Unicode variant, this filter is for you!
 
 A complete list of symbols that are replaced by this filter can be found in the
-[`src/Main.hs`](src/Main.hs) file.
+[`src/Symbols.hs`](src/Symbols.hs) file.
 
 ## Usage
 
- 1. Get a binary [here][releases] and put it in your [PATH]. If necessary, you
+ 1. Get binaries [here][releases] and put them in your [PATH]. If necessary, you
     can instead build from source (see below).
  2. Write a Markdown document containing Unicode characters like the provided
     [example file](example.md).
@@ -44,10 +44,20 @@ A complete list of symbols that are replaced by this filter can be found in the
 
 ## But my keyboard has no "α" and "∃" keys!
 
-This filter will not make *writing* math expressions easier. It only makes
-*reading* them easier. How to input Unicode symbols depends on your editor. In
-Vim, [digraphs] and the [characterize plugin] are very useful for working with
-Unicode.
+The `pandoc-unicode-math` filter will not make *writing* math expressions
+easier. It only makes *reading* them easier. How to input Unicode symbols
+depends on your editor. In Vim, [digraphs] and the [characterize plugin] are
+very useful for working with Unicode.
+
+However, to help you get started with existing documents a second filter called
+`pandoc-unicode-math-from-latex` is provided that replaces "regular" Latex math
+commands like `\forall` or `\alpha` by equivalent Unicode symbols like ∀ or α.
+Yes, that means it's the inverse of the `pandoc-unicode-math` filter, except
+that `pandoc-unicode-math` replaces characters like Α (greek Alpha) by A (latin
+A) but `pandoc-unicode-math-from-latex` does not do the reverse since this would
+be ambiguous. This filter can be used like this:
+
+    $ pandoc latex-math.md --filter pandoc-unicode-math-from-latex -o unicode-math.md
 
 ## Limitations
 
@@ -61,10 +71,10 @@ expression:
 
 ## Building from source
 
-This filter is written in Haskell. It is recommended to use [Stack] for
+These filters are written in Haskell. It is recommended to use [Stack] for
 building. Install Stack, the [pkg-config] tool and the [PCRE] library (these are
 required by one of the used Haskell libraries, namely the pcre-heavy package).
-On Debian:
+For example on Debian:
 
     # apt install haskell-stack pkg-config libpcre++-dev
 
@@ -75,12 +85,13 @@ following commands:
     $ stack build
     $ stack install
 
-On Linux, this will install the `pandoc-unicode-math` filter to `~/.local/bin/`
-and on Windows, well, I don't know but surely somewhere sensible.
+On Linux, this will install two filters, `pandoc-unicode-math` and
+`pandoc-unicode-math-from-latex` to `~/.local/bin/` and on Windows, well, I
+don't know but surely somewhere sensible.
 
 Maybe you would like to adapt the [`stack.yaml`](stack.yaml) file prior to
 building to select a [Stackage] snapshot that fits your environment. For
-example, use `resolver: lts-7.24` to create a binary that is compatible with
+example, use `resolver: lts-7.24` to create binaries that are compatible with
 Pandoc 1.17 (shipped with Debian 9) or `resolver: lts-9.21` for Pandoc 1.19 and
 later, including Pandoc 2 (there was an API change between 1.17 and 1.19, so you
 need different binaries).
