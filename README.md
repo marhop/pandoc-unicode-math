@@ -31,6 +31,9 @@ If you prefer the Unicode variant, this filter is for you!
 A complete list of symbols that are replaced by this filter can be found in the
 [`src/Symbols.hs`](src/Symbols.hs) file.
 
+[Pandoc]: https://pandoc.org/
+[filter]: https://pandoc.org/filters.html
+
 ## Usage
 
  1. Get binaries [here][releases] and put them in your [PATH]. If necessary, you
@@ -41,6 +44,9 @@ A complete list of symbols that are replaced by this filter can be found in the
     along the way:
 
         $ pandoc example.md --filter pandoc-unicode-math -o example.pdf
+
+[releases]: https://github.com/marhop/pandoc-unicode-math/releases
+[PATH]: https://en.wikipedia.org/wiki/PATH_(variable)
 
 ## But my keyboard has no "α" and "∃" keys!
 
@@ -59,6 +65,9 @@ be ambiguous. This filter can be used like this:
 
     $ pandoc latex-math.md --filter pandoc-unicode-math-from-latex -o unicode-math.md
 
+[digraphs]: http://vimdoc.sourceforge.net/htmldoc/digraph.html
+[characterize plugin]: https://github.com/tpope/vim-characterize
+
 ## Limitations
 
 For more complex math containing fractions like `\frac{2}{3+5}` or lots of
@@ -68,6 +77,18 @@ Unicode symbols and Latex commands can be used together in the same
 expression:
 
     ∃ x ∈ ℕ : \frac{x}{2} = 21
+
+## Alternatives
+
+Instead of writing Unicode symbols in your source file and applying this filter,
+you can write regular Latex math commands and use an editor that displays them
+in a more readable way. For example, using Vim and the [Markdown plugin], these
+settings have the desired effect:
+
+    let g:vim_markdown_math=1
+    set conceallevel=2
+
+[Markdown plugin]: https://github.com/plasticboy/vim-markdown
 
 ## Building from source
 
@@ -96,13 +117,7 @@ Pandoc 1.17 (shipped with Debian 9) or `resolver: lts-9.21` for Pandoc 1.19 and
 later, including Pandoc 2 (there was an API change between 1.17 and 1.19, so you
 need different binaries).
 
-[Pandoc]: https://pandoc.org/
-[filter]: https://pandoc.org/filters.html
-[releases]: https://github.com/marhop/pandoc-unicode-math/releases
-[PATH]: https://en.wikipedia.org/wiki/PATH_(variable)
-[digraphs]: http://vimdoc.sourceforge.net/htmldoc/digraph.html
-[characterize plugin]: https://github.com/tpope/vim-characterize
 [Stack]: https://docs.haskellstack.org/
-[Stackage]: https://www.stackage.org/
 [pkg-config]: https://www.freedesktop.org/wiki/Software/pkg-config/
 [PCRE]: https://pcre.org/
+[Stackage]: https://www.stackage.org/
