@@ -111,11 +111,12 @@ On Linux, this will install two filters, `pandoc-unicode-math` and
 don't know but surely somewhere sensible.
 
 Maybe you would like to adapt the [`stack.yaml`](stack.yaml) file prior to
-building to select a [Stackage] snapshot that fits your environment. For
-example, use `resolver: lts-7.24` to create binaries that are compatible with
-Pandoc 1.17 (shipped with Debian 9) or `resolver: lts-9.21` for Pandoc 1.19 and
-later, including Pandoc 2 (there was an API change between 1.17 and 1.19, so you
-need different binaries).
+building to select a [Stackage] snapshot that fits your environment.
+
+# Contributing
+
+Pull Requests are welcome. It's easy to add new symbols to the
+[`src/Symbols.hs`](src/Symbols.hs) file.
 
 [Stack]: https://docs.haskellstack.org/
 [pkg-config]: https://www.freedesktop.org/wiki/Software/pkg-config/
