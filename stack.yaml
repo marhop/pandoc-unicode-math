@@ -1,7 +1,7 @@
-resolver: lts-13.15
+resolver: lts-14.12
 
-# For compatibility with Pandoc ≤ 1.17 (pandoc-types 1.16). This is shipped with
-# Debian 9.
+# For compatibility with Pandoc ≤ 1.17 (pandoc-types 1.16) which is shipped with
+# Debian 9 use lts-7.24!
 #
 # N.B., building with stack on Debian 9 fails unless
 # `~/.stack/programs/x86_64-linux/ghc-8.0.1/lib/ghc-8.0.1/settings` contains the
@@ -12,4 +12,3 @@ resolver: lts-13.15
 #     ("ld flags", " -no-pie"),
 # 
 # See <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=844598>.
-#resolver: lts-7.24
