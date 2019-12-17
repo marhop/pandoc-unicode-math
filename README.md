@@ -113,7 +113,7 @@ don't know but surely somewhere sensible.
 Maybe you would like to adapt the [`stack.yaml`](stack.yaml) file prior to
 building to select a [Stackage] snapshot that fits your environment.
 
-# Contributing
+## Contributing
 
 Pull Requests are welcome. It's easy to add new symbols to the
 [`src/Symbols.hs`](src/Symbols.hs) file.
