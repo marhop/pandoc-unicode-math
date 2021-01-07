@@ -1,3 +1,14 @@
+# Release 2.0.0
+
+2021-01-08
+
+Starting with this release, version number increments will also reflect
+compatibility with Pandoc versions i.e., if a new release of this filter is not
+compatible with an older Pandoc version anymore this will lead to a major
+version increment (like 1.2.0 → 2.0.0).
+
+Pandoc compatibility: 2.8-2.9
+
 # Release 1.2.0
 
 2019-12-17
@@ -10,6 +21,8 @@ Leitow.
 
 Several new symbols were added. Contributed by Fynn Leitow.
 
+Pandoc compatibility: ca. 1.19-2.7.3
+
 # Release 1.1.0
 
 2019-04-09
@@ -21,8 +34,12 @@ Mittal.
 
 Several new symbols were added. Partly contributed by Eric Hanson.
 
+Pandoc compatibility: 1.19-ca. 2.7
+
 # Release 1.0.0
 
 2018-02-27
 
 Initial release.
+
+Pandoc compatibility: 1.17

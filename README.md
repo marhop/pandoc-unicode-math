@@ -36,8 +36,9 @@ A complete list of symbols that are replaced by this filter can be found in the
 
 ## Usage
 
- 1. Get binaries [here][releases] and put them in your [PATH]. If necessary, you
-    can instead build from source (see below).
+ 1. Get binaries [here][releases] and put them in your [PATH]. Be careful to
+    choose a release that matches your Pandoc version. If necessary, you can
+    build from source (see below).
  2. Write a Markdown document containing Unicode characters like the provided
     [example file](example.md).
  3. Invoke Pandoc to convert the Markdown document to PDF and apply the filter
