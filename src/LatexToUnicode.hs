@@ -3,6 +3,7 @@
 module LatexToUnicode where
 
 import Data.Map.Strict (findWithDefault)
+import Data.Text (Text)
 import Text.Pandoc.JSON (toJSONFilter)
 import Text.Regex.PCRE.Heavy (Regex, gsub, re)
 
@@ -17,7 +18,7 @@ main = toJSONFilter (mathFilter latexToUnicode)
 --   * \alpha → α
 --   * \mathbb{N} → ℕ
 --   * but /not/ A → Α (latin A to greek Alpha) because that's ambiguous
-latexToUnicode :: String -> String
+latexToUnicode :: Text -> Text
 latexToUnicode = gsub latexCommand (\x -> findWithDefault x x latexToUnicodeMap)
 
 -- | Regex describing a latex command like "\alpha" or "\mathbb{N}".

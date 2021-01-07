@@ -1,7 +1,11 @@
+{-# LANGUAGE OverloadedStrings #-}
+
 module UnicodeToLatex where
 
 import Data.Char (isAlphaNum)
-import Data.Map.Strict ((!?), findWithDefault)
+import Data.Map.Strict (findWithDefault, (!?))
+import Data.Text (Text, cons, singleton, snoc, uncons)
+import qualified Data.Text as T
 import Text.Pandoc.JSON (toJSONFilter)
 
 import MathFilter
@@ -21,16 +25,15 @@ main = toJSONFilter (mathFilter unicodeToLatex)
 --
 --   * λx → \lambda x
 --   * αβ → \alpha\beta
-unicodeToLatex :: String -> String
-unicodeToLatex = foldr f ""
+unicodeToLatex :: Text -> Text
+unicodeToLatex = T.foldr f ""
   where
-    f :: Char -> String -> String
-    f x "" = findWithDefault [x] x unicodeToLatexMap
-    f x (y:ys) =
-        case unicodeToLatexMap !? x of
-            Just x' -> x' ++ isolate y ++ ys
-            Nothing -> x : y : ys
-    isolate :: Char -> String
+    f :: Char -> Text -> Text
+    f x acc
+      | Just (y, ys) <- uncons acc =
+        maybe (x `cons` acc) (<> isolate y <> ys) (unicodeToLatexMap !? x)
+      | otherwise = findWithDefault (singleton x) x unicodeToLatexMap
+    isolate :: Char -> Text
     isolate x
-        | isAlphaNum x = ' ' : [x]
-        | otherwise = [x]
+      | isAlphaNum x = " " `snoc` x
+      | otherwise = singleton x

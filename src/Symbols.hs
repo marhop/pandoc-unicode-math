@@ -1,19 +1,22 @@
+{-# LANGUAGE OverloadedStrings #-}
+
 module Symbols
     ( unicodeToLatexMap
     , latexToUnicodeMap
     ) where
 
 import Data.Map.Strict (Map, fromList)
+import Data.Text (Text, singleton)
 
 -- | Map from Unicode symbols to Latex commands.
-unicodeToLatexMap :: Map Char String
+unicodeToLatexMap :: Map Char Text
 unicodeToLatexMap = fromList symbols
 
 -- | Map from Latex commands to Unicode symbols.
-latexToUnicodeMap :: Map String String
-latexToUnicodeMap = fromList [(y, [x]) | (x, y) <- symbols]
+latexToUnicodeMap :: Map Text Text
+latexToUnicodeMap = fromList [(y, singleton x) | (x, y) <- symbols]
 
-symbols :: [(Char, String)]
+symbols :: [(Char, Text)]
 symbols =
     [ ('¬', "\\neg")
     , ('±', "\\pm")

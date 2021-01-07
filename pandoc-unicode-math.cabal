@@ -25,9 +25,10 @@ executable pandoc-unicode-math
   hs-source-dirs:    src
   main-is:           UnicodeToLatex.hs
   ghc-options:       -main-is UnicodeToLatex
-  build-depends:     base
-                   , containers
-                   , pandoc-types
+  build-depends:     base >= 4.13 && < 4.14
+                   , containers >= 0.6.2 && < 0.7
+                   , pandoc-types == 1.20
+                   , text >= 1.2.4 && < 1.3
   other-modules:     MathFilter
                    , Symbols
   default-language:  Haskell2010
@@ -36,10 +37,11 @@ executable pandoc-unicode-math-from-latex
   hs-source-dirs:    src
   main-is:           LatexToUnicode.hs
   ghc-options:       -main-is LatexToUnicode
-  build-depends:     base
-                   , containers
-                   , pandoc-types
-                   , pcre-heavy
+  build-depends:     base >= 4.13 && < 4.14
+                   , containers >= 0.6.2 && < 0.7
+                   , pandoc-types == 1.20
+                   , pcre-heavy >= 1.0.0 && < 1.1
+                   , text >= 1.2.4 && < 1.3
   other-modules:     MathFilter
                    , Symbols
   default-language:  Haskell2010
