@@ -92,33 +92,26 @@ settings have the desired effect:
 
 ## Building from source
 
-These filters are written in Haskell. It is recommended to use [Stack] for
-building. Install Stack, the [pkg-config] tool and the [PCRE] library (these are
-required by one of the used Haskell libraries, namely the pcre-heavy package).
-For example on Debian:
+These filters are written in Haskell, so you need GHC (compiler) and Cabal
+(build tool), best installed with [ghcup] if you use a Unix-like OS. You also
+need the [pkg-config] tool and the [PCRE] library (these are required by one of
+the used Haskell libraries, namely the pcre-heavy package).
 
-    # apt install haskell-stack pkg-config libpcre++-dev
-
-Then clone the Git repository, change to its top level directory and run the
+Clone the Git repository, change to its top level directory and run the
 following commands:
 
-    $ stack setup
-    $ stack build
-    $ stack install
+    $ cabal build
+    $ cabal install
 
 On Linux, this will install two filters, `pandoc-unicode-math` and
-`pandoc-unicode-math-from-latex` to `~/.local/bin/` and on Windows, well, I
+`pandoc-unicode-math-from-latex` to `~/.cabal/bin/` and on Windows, well, I
 don't know but surely somewhere sensible.
 
-Maybe you would like to adapt the [`stack.yaml`](stack.yaml) file prior to
-building to select a [Stackage] snapshot that fits your environment.
+[ghcup]: https://www.haskell.org/ghcup/
+[pkg-config]: https://www.freedesktop.org/wiki/Software/pkg-config/
+[PCRE]: https://pcre.org/
 
 ## Contributing
 
 Pull Requests are welcome. It's easy to add new symbols to the
 [`src/Symbols.hs`](src/Symbols.hs) file.
-
-[Stack]: https://docs.haskellstack.org/
-[pkg-config]: https://www.freedesktop.org/wiki/Software/pkg-config/
-[PCRE]: https://pcre.org/
-[Stackage]: https://www.stackage.org/
