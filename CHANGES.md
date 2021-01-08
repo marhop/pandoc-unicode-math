@@ -1,3 +1,9 @@
+# Release 3.0.0
+
+2021-01-08
+
+Pandoc compatibility: 2.10
+
 # Release 2.0.0
 
 2021-01-08
