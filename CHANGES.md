@@ -1,3 +1,12 @@
+# Release 3.0.1
+
+2021-01-09
+
+This release can be built with a broader range of GHC versions (at least 8.6,
+8.8, 8.10 instead of just 8.8 with release 2.0.0). No functional changes.
+
+Pandoc compatibility: 2.10
+
 # Release 3.0.0
 
 2021-01-08

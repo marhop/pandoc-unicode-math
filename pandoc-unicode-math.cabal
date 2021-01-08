@@ -1,5 +1,5 @@
 name:                pandoc-unicode-math
-version:             3.0.0
+version:             3.0.1
 synopsis:            Replace Unicode symbols by equivalent Latex commands
 description:         A Pandoc filter that replaces Unicode math symbols and
                      greek letters like ∀, ∈, →, λ, or Ω in math environments
