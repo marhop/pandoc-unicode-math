@@ -135,6 +135,8 @@ symbols =
     , ('ψ', "\\psi")
     , ('Ψ', "\\Psi")
     , ('ω', "\\omega")
+    -- Do not switch order of the two "\\Omega" entries! The /last/ one is used
+    -- in latexToUnicodeMap, which is what we want.
     , ('Ω', "\\Omega")
     , ('Ω', "\\Omega")
     ]
