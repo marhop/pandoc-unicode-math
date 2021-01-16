@@ -38,8 +38,10 @@ jobs:
         cabal build --only-dependencies --enable-tests --enable-benchmarks
     - name: Build
       run: cabal build
+    - name: Install
+      run: cabal install --installdir=bin
     - uses: actions/upload-artifact@v2
       with:
-        name: pandoc-unicode-math-${{ runner.os }}
-        path: pandoc-unicode-math
+        name: ${{ runner.os }}
+        path: ./bin
     
