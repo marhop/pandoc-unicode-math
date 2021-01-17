@@ -1,72 +1,70 @@
 name: Haskell CI
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    push:
+        branches: [master]
+    pull_request:
+        branches: [master]
 
 jobs:
-  build-ubuntu:
+    build-ubuntu:
+        runs-on: ubuntu-latest
 
-    runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+              with:
+                  fetch-depth: 1
 
-    steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 1  
+            - name: Install dependencies
+              run: |
+                  cabal update
+                  cabal build --only-dependencies --enable-tests --enable-benchmarks
+            - name: Build
+              run: cabal build
+            - name: Install
+              run: cabal install --installdir=bin
+            - uses: actions/upload-artifact@v2
+              with:
+                  name: ${{ runner.os }}
+                  path: ./bin
 
-    - name: Install dependencies
-      run: |
-        cabal update
-        cabal build --only-dependencies --enable-tests --enable-benchmarks
-    - name: Build
-      run: cabal build
-    - name: Install
-      run: cabal install --installdir=bin
-    - uses: actions/upload-artifact@v2
-      with:
-        name: ${{ runner.os }}
-        path: ./bin
+    build-macos:
+        runs-on: macos-latest
 
-  build-macos:
+        steps:
+            - uses: actions/checkout@v2
+              with:
+                  fetch-depth: 1
+            - name: Install dependencies
+              run: |
+                  cabal update
+                  cabal build --only-dependencies --enable-tests --enable-benchmarks
+            - name: Build
+              run: cabal build
+            - name: Install
+              run: cabal install --installdir=bin
+            - uses: actions/upload-artifact@v2
+              with:
+                  name: ${{ runner.os }}
+                  path: ./bin
 
-    runs-on: macos-latest
+    # build-windows:
 
-    steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 1  
-    - name: Install dependencies
-      run: |
-        cabal update
-        cabal build --only-dependencies --enable-tests --enable-benchmarks
-    - name: Build
-      run: cabal build
-    - name: Install
-      run: cabal install --installdir=bin
-    - uses: actions/upload-artifact@v2
-      with:
-        name: ${{ runner.os }}
-        path: ./bin
+    #   runs-on: windows-latest
 
-  build-windows:
-
-    runs-on: windows-latest
-
-    steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 1  
-    - name: Install dependencies
-      run: |
-        cabal update
-        cabal build --only-dependencies --enable-tests --enable-benchmarks
-    - name: Build
-      run: cabal build
-    - name: Install
-      run: cabal install --installdir=bin
-    - uses: actions/upload-artifact@v2
-      with:
-        name: ${{ runner.os }}
-        path: ./bin
+    #   steps:
+    #   - uses: actions/checkout@v2
+    #     with:
+    #       fetch-depth: 1
+    #   - name: Install dependencies
+    #     run: |
+    #       cabal update
+    #       cabal build --only-dependencies --enable-tests --enable-benchmarks
+    #   - name: Build
+    #     run: cabal build
+    #   - name: Install
+    #     run: cabal install --installdir=bin
+    #   - uses: actions/upload-artifact@v2
+    #     with:
+    #       name: ${{ runner.os }}
+    #       path: ./bin
