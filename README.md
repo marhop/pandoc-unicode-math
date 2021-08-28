@@ -37,8 +37,9 @@ A complete list of symbols that are replaced by this filter can be found in the
 ## Usage
 
  1. Get binaries [here][releases] and put them in your [PATH]. Be careful to
-    choose a release that matches your Pandoc version. If necessary, you can
-    build from source (see below).
+    choose a release that matches your Pandoc version (otherwise you'll get an
+    error like `Incompatible API versions: encoded with [1,20] but attempted to
+    decode with [1,21].`). If necessary, you can build from source (see below).
  2. Write a Markdown document containing Unicode characters like the provided
     [example file](example.md).
  3. Invoke Pandoc to convert the Markdown document to PDF and apply the filter
@@ -101,12 +102,22 @@ the used Haskell libraries, namely the pcre-heavy package).
 Clone the Git repository, change to its top level directory and run the
 following commands:
 
-    $ cabal build
+    $ cabal build --constraint 'pandoc-types==1.22'
     $ cabal install
 
 On Linux, this will install two filters, `pandoc-unicode-math` and
 `pandoc-unicode-math-from-latex` to `~/.cabal/bin/` and on Windows, well, I
 don't know but surely somewhere sensible.
+
+In the above build command you have to choose a version of the pandoc-types
+library that matches your Pandoc release. For reference, here is a compatibility
+list:
+
+pandoc-types | pandoc
+-------------|---------
+1.22         | ≥ 2.11
+1.21         | 2.10
+1.20         | 2.8-2.9
 
 [ghcup]: https://www.haskell.org/ghcup/
 [pkg-config]: https://www.freedesktop.org/wiki/Software/pkg-config/
