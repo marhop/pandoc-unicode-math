@@ -1,3 +1,4 @@
+cabal-version:       2.2
 name:                pandoc-unicode-math
 version:             3.0.1
 synopsis:            Replace Unicode symbols by equivalent Latex commands
@@ -8,40 +9,33 @@ description:         A Pandoc filter that replaces Unicode math symbols and
                      math expressions in both Markdown and PDF. And another
                      filter that does the reverse.
 homepage:            https://github.com/marhop/pandoc-unicode-math
-license:             BSD3
+license:             BSD-3-Clause
 license-file:        LICENSE
 author:              Martin Hoppenheit
 maintainer:          martin@hoppenheit.info
 copyright:           2017-2021 Martin Hoppenheit
 category:            Text
 build-type:          Simple
-cabal-version:       >=1.10
 extra-source-files:  README.md
                    , example.md
 
--- Calling this pandoc-unicode-math-to-latex would neither be pretty nor
--- backwards compatible.
-executable pandoc-unicode-math
+common deps
   hs-source-dirs:    src
+  default-language:  Haskell2010
+  build-depends:     base >= 4.12 && < 5
+                   , containers >= 0.6.0 && < 0.7
+                   , pandoc-types >= 1.20 && < 1.23
+                   , text >= 1.2.3 && < 1.3
+  other-modules:     MathFilter
+                   , Symbols
+
+executable pandoc-unicode-math
+  import:            deps
   main-is:           UnicodeToLatex.hs
   ghc-options:       -main-is UnicodeToLatex
-  build-depends:     base >= 4.12 && < 5
-                   , containers >= 0.6.0 && < 0.7
-                   , pandoc-types >= 1.20 && < 1.23
-                   , text >= 1.2.3 && < 1.3
-  other-modules:     MathFilter
-                   , Symbols
-  default-language:  Haskell2010
 
 executable pandoc-unicode-math-from-latex
-  hs-source-dirs:    src
+  import:            deps
   main-is:           LatexToUnicode.hs
   ghc-options:       -main-is LatexToUnicode
-  build-depends:     base >= 4.12 && < 5
-                   , containers >= 0.6.0 && < 0.7
-                   , pandoc-types >= 1.20 && < 1.23
-                   , pcre-heavy >= 1.0.0 && < 1.1
-                   , text >= 1.2.3 && < 1.3
-  other-modules:     MathFilter
-                   , Symbols
-  default-language:  Haskell2010
+  build-depends:     pcre-heavy >= 1.0.0 && < 1.1
