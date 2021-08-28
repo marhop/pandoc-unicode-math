@@ -1,0 +1,25 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macOS-latest, windows-latest]
+        pandoc-types-version: ["1.20", "1.21", "1.22"]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: haskell/actions/setup@v1
+        with:
+          ghc-version: "8.10.7"
+          cabal-version: "3.4"
+      - run: |
+          cabal build --constraint 'pandoc-types==${{ matrix.pandoc-types-version }}'
+          cabal install --installdir bin
+      - uses: actions/upload-artifact@v2
+        with:
+          name: ${{ runner.os }}_pandoc-types-${{ matrix.pandoc-types-version }}
+          path: ./bin
