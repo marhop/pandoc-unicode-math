@@ -1,5 +1,7 @@
 # pandoc-unicode-math
 
+[![CI](https://github.com/marhop/pandoc-unicode-math/actions/workflows/ci.yml/badge.svg)](https://github.com/marhop/pandoc-unicode-math/actions/workflows/ci.yml)
+
 If you prefer Markdown to Latex because of its readability, then why not
 improve the readability of math expressions as well? Just use the power of
 Unicode!
