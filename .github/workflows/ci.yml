@@ -4,11 +4,11 @@ on: [push, pull_request]
 
 jobs:
   build:
-    name: build
+    name: ${{ matrix.os }}, pandoc-types ${{ matrix.pandoc-types-version }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macOS-latest, windows-latest]
+        os: [ubuntu-latest, macOS-latest]
         pandoc-types-version: ["1.20", "1.21", "1.22"]
     steps:
       - uses: actions/checkout@v2
