@@ -17,8 +17,7 @@ jobs:
           ghc-version: "8.10.7"
           cabal-version: "3.4"
       - run: |
-          cabal build --constraint 'pandoc-types==${{ matrix.pandoc-types-version }}'
-          cabal install --installdir bin
+          cabal install --installdir bin --constraint 'pandoc-types==${{ matrix.pandoc-types-version }}'
       - uses: actions/upload-artifact@v2
         with:
           name: ${{ runner.os }}_pandoc-types-${{ matrix.pandoc-types-version }}

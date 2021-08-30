@@ -102,18 +102,18 @@ need the [pkg-config] tool and the [PCRE] library (these are required by one of
 the used Haskell libraries, namely the pcre-heavy package).
 
 Clone the Git repository, change to its top level directory and run the
-following commands:
+following command:
 
-    $ cabal build --constraint 'pandoc-types==1.22'
-    $ cabal install
+    $ cabal install --constraint 'pandoc-types==1.22'
 
-On Linux, this will install two filters, `pandoc-unicode-math` and
+On Linux, this will build and install two filters, `pandoc-unicode-math` and
 `pandoc-unicode-math-from-latex` to `~/.cabal/bin/` and on Windows, well, I
 don't know but surely somewhere sensible.
 
-In the above build command you have to choose a version of the pandoc-types
-library that matches your Pandoc release. For reference, here is a compatibility
-list:
+In the above command you have to choose a version of the pandoc-types library
+that matches your Pandoc release. (If you run `cabal build` in a separate step
+the `--constraint` option should be included there as well.) For reference, here
+is a compatibility list:
 
 pandoc-types | pandoc
 -------------|---------
