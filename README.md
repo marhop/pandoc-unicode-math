@@ -97,12 +97,8 @@ settings have the desired effect:
 ## Building from source
 
 These filters are written in Haskell, so you need GHC (compiler) and Cabal
-(build tool), best installed with [ghcup] if you use a Unix-like OS. You also
-need the [pkg-config] tool and the [PCRE] library (these are required by one of
-the used Haskell libraries, namely the pcre-heavy package).
-
-Clone the Git repository, change to its top level directory and run the
-following command:
+(build tool), best installed with [ghcup] if you use a Unix-like OS. Clone the
+Git repository, change to its top level directory and run the following command:
 
     $ cabal install --constraint 'pandoc-types==1.22'
 
@@ -122,8 +118,6 @@ pandoc-types | pandoc
 1.20         | 2.8-2.9
 
 [ghcup]: https://www.haskell.org/ghcup/
-[pkg-config]: https://www.freedesktop.org/wiki/Software/pkg-config/
-[PCRE]: https://pcre.org/
 
 ## Contributing
 
