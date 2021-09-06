@@ -15,7 +15,10 @@ jobs:
         include:
           # Apparently pandoc-types 1.20 does not work with GHC 9, so use GHC 8,
           # but that is not available on GitHub's Windows hosts.
-          - os: [ubuntu-latest, macOS-latest]
+          - os: ubuntu-latest
+            ghc: "8.10.7"
+            pandoc-types: "1.20"
+          - os: macOS-latest
             ghc: "8.10.7"
             pandoc-types: "1.20"
     steps:
