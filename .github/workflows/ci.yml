@@ -8,7 +8,9 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macOS-latest, windows-latest]
+        # TODO Windows build fails in GitHub CI (2021-09-07).
+        # os: [ubuntu-latest, macOS-latest, windows-latest]
+        os: [ubuntu-latest, macOS-latest]
         ghc: ["9.0.1"]
         cabal: ["3.4"]
         pandoc-types: ["1.21", "1.22"]
