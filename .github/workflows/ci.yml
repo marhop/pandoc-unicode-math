@@ -8,21 +8,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        # TODO Windows build fails in GitHub CI (2021-09-07).
-        # os: [ubuntu-latest, macOS-latest, windows-latest]
-        os: [ubuntu-latest, macOS-latest]
-        ghc: ["9.0.1"]
-        cabal: ["3.4"]
-        pandoc-types: ["1.21", "1.22"]
-        include:
-          # Apparently pandoc-types 1.20 does not work with GHC 9, so use GHC 8,
-          # but that is not available on GitHub's Windows hosts.
-          - os: ubuntu-latest
-            ghc: "8.10.7"
-            pandoc-types: "1.20"
-          - os: macOS-latest
-            ghc: "8.10.7"
-            pandoc-types: "1.20"
+        os: [ubuntu-latest, macOS-latest, windows-latest]
+        ghc: ["8.10.7"]
+        cabal: ["3.6"]
+        pandoc-types: ["1.20", "1.21", "1.22"]
     steps:
       - uses: actions/checkout@v2
       - uses: haskell/actions/setup@v1
