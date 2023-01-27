@@ -9,16 +9,16 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macOS-latest, windows-latest]
-        ghc: ["8.10.7"]
-        cabal: ["3.6"]
-        pandoc-types: ["1.20", "1.21", "1.22"]
+        ghc: ["9.4.2"]
+        cabal: ["3.8"]
+        pandoc-types: ["1.20", "1.21", "1.22", "1.23"]
     steps:
       - uses: actions/checkout@v2
       - uses: haskell/actions/setup@v1
         with:
           ghc-version: ${{ matrix.ghc }}
           cabal-version: ${{ matrix.cabal }}
-      - run: cabal install --installdir bin --constraint 'pandoc-types==${{ matrix.pandoc-types }}'
+      - run: cabal install --installdir bin --constraint 'pandoc-types ^>= ${{ matrix.pandoc-types }}'
       - uses: actions/upload-artifact@v2
         with:
           name: pandoc-unicode-math_${{ runner.os }}_pandoc-types-${{ matrix.pandoc-types }}
