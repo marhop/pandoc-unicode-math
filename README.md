@@ -100,7 +100,7 @@ These filters are written in Haskell, so you need GHC (compiler) and Cabal
 (build tool), best installed with [ghcup] if you use a Unix-like OS. Clone the
 Git repository, change to its top level directory and run the following command:
 
-    $ cabal install --constraint 'pandoc-types==1.22'
+    $ cabal install --constraint 'pandoc-types ^>= 1.23'
 
 On Linux, this will build and install two filters, `pandoc-unicode-math` and
 `pandoc-unicode-math-from-latex` to `~/.cabal/bin/` and on Windows, well, I
@@ -113,7 +113,8 @@ is a compatibility list:
 
 pandoc-types | pandoc
 -------------|---------
-1.22         | ≥ 2.11
+1.23         | ≥ 3.0
+1.22         | 2.11-2.19
 1.21         | 2.10
 1.20         | 2.8-2.9
 
