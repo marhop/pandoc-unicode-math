@@ -97,8 +97,8 @@ settings have the desired effect:
 ## Building from source
 
 These filters are written in Haskell, so you need GHC (compiler) and Cabal
-(build tool), best installed with [ghcup] if you use a Unix-like OS. Clone the
-Git repository, change to its top level directory and run the following command:
+(build tool), best installed with [ghcup]. Clone the Git repository, change to
+its top level directory and run the following command:
 
     $ cabal install --constraint 'pandoc-types ^>= 1.23'
 
@@ -111,12 +111,15 @@ that matches your Pandoc release. (If you run `cabal build` in a separate step
 the `--constraint` option should be included there as well.) For reference, here
 is a compatibility list:
 
-pandoc-types | pandoc
--------------|---------
-1.23         | ≥ 3.0
-1.22         | 2.11-2.19
-1.21         | 2.10
-1.20         | 2.8-2.9
+pandoc-types | pandoc    | GHC
+-------------|-----------|---------------------
+1.23         | ≥ 3.0     | 8.8.4, 8.10.7, 9.4.2
+1.22         | 2.11-2.19 | 8.8.4, 8.10.7, 9.4.2
+1.21         | 2.10      | 8.8.4, 8.10.7
+1.20         | 2.8-2.9   | 8.8.4, 8.10.7
+
+The GHC column records compiler versions I successfully built with. Other
+versions may or may not work.
 
 [ghcup]: https://www.haskell.org/ghcup/
 
