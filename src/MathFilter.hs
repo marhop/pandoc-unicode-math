@@ -1,6 +1,7 @@
 module MathFilter
-    ( mathFilter
-    ) where
+  ( mathFilter,
+  )
+where
 
 import Data.Text (Text)
 import Text.Pandoc.JSON (Inline (Math))

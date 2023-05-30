@@ -1,9 +1,10 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 module Symbols
-    ( unicodeToLatexMap
-    , latexToUnicodeMap
-    ) where
+  ( unicodeToLatexMap,
+    latexToUnicodeMap,
+  )
+where
 
 import Data.Map.Strict (Map, fromList)
 import Data.Text (Text, singleton)
@@ -18,129 +19,129 @@ latexToUnicodeMap = fromList [(y, singleton x) | (x, y) <- symbols]
 
 symbols :: [(Char, Text)]
 symbols =
-    [ ('¬', "\\neg")
-    , ('±', "\\pm")
-    , ('×', "\\times")
-    , ('÷', "\\div")
-    , ('…', "\\dots")
-    , ('ℕ', "\\mathbb{N}")
-    , ('ℚ', "\\mathbb{Q}")
-    , ('ℝ', "\\mathbb{R}")
-    , ('ℤ', "\\mathbb{Z}")
-    , ('ℂ', "\\mathbb{C}")
-    , ('←', "\\leftarrow")
-    , ('↑', "\\uparrow")
-    , ('→', "\\rightarrow")
-    , ('↓', "\\downarrow")
-    , ('↔', "\\leftrightarrow")
-    , ('⇐', "\\Leftarrow")
-    , ('⇒', "\\Rightarrow")
-    , ('⇔', "\\Leftrightarrow")
-    , ('↦', "\\mapsto")
-    , ('∀', "\\forall")
-    , ('∃', "\\exists")
-    , ('∅', "\\emptyset")
-    , ('∈', "\\in")
-    , ('∉', "\\notin")
-    , ('∋', "\\ni")
-    , ('∎', "\\blacksquare")
-    , ('∫', "\\int")
-    , ('∑', "\\sum")
-    , ('√', "\\sqrt")
-    , ('∂', "\\partial")
-    , ('∓', "\\mp")
-    , ('∗', "\\ast")
-    , ('∘', "\\circ")
-    , ('∙', "\\bullet")
-    , ('∝', "\\propto")
-    , ('∞', "\\infty")
-    , ('∥', "\\parallel")
-    , ('∡', "\\measuredangle")
-    , ('∧', "\\land")
-    , ('∨', "\\lor")
-    , ('∩', "\\cap")
-    , ('∪', "\\cup")
-    , ('⌈', "\\lceil")
-    , ('⌉', "\\rceil")
-    , ('⌊', "\\lfloor")
-    , ('⌋', "\\rfloor")
-    , ('⟨', "\\langle")
-    , ('⟩', "\\rangle")
-    , ('∴', "\\therefore")
-    , ('∵', "\\because")
-    , ('≈', "\\approx")
-    , ('≠', "\\neq")
-    , ('≡', "\\equiv")
-    , ('≤', "\\leq")
-    , ('≥', "\\geq")
-    , ('⊂', "\\subset")
-    , ('⊃', "\\supset")
-    , ('⊆', "\\subseteq")
-    , ('⊇', "\\supseteq")
-    , ('⊢', "\\vdash")
-    , ('⊤', "\\top")
-    , ('⊥', "\\bot")
-    , ('⊨', "\\vDash")
-    , ('⋅', "\\cdot")
-    , ('⋮', "\\vdots")
-    , ('⋯', "\\cdots")
-    , ('ℵ', "\\aleph")
-    , ('α', "\\alpha")
-    , ('Α', "A")
-    , ('β', "\\beta")
-    , ('Β', "B")
-    , ('γ', "\\gamma")
-    , ('Γ', "\\Gamma")
-    , ('δ', "\\delta")
-    , ('Δ', "\\Delta")
-    , ('ε', "\\varepsilon")
-    , ('ϵ', "\\epsilon")
-    , ('Ε', "E")
-    , ('ζ', "\\zeta")
-    , ('Ζ', "Z")
-    , ('η', "\\eta")
-    , ('Η', "H")
-    , ('θ', "\\theta")
-    , ('ϑ', "\\vartheta")
-    , ('Θ', "\\Theta")
-    , ('ι', "\\iota")
-    , ('Ι', "I")
-    , ('κ', "\\kappa")
-    , ('ϰ', "\\varkappa")
-    , ('Κ', "K")
-    , ('λ', "\\lambda")
-    , ('Λ', "\\Lambda")
-    , ('μ', "\\mu")
-    , ('Μ', "M")
-    , ('∇', "\\nabla")
-    , ('ν', "\\nu")
-    , ('Ν', "N")
-    , ('ξ', "\\xi")
-    , ('Ξ', "\\Xi")
-    , ('ο', "o")
-    , ('Ο', "O")
-    , ('π', "\\pi")
-    , ('Π', "\\Pi")
-    , ('ρ', "\\rho")
-    , ('ϱ', "\\varrho")
-    , ('Ρ', "P")
-    , ('σ', "\\sigma")
-    , ('ς', "\\varsigma")
-    , ('Σ', "\\Sigma")
-    , ('τ', "\\tau")
-    , ('Τ', "T")
-    , ('υ', "\\upsilon")
-    , ('Υ', "\\Upsilon")
-    , ('φ', "\\varphi")
-    , ('ϕ', "\\phi")
-    , ('Φ', "\\Phi")
-    , ('χ', "\\chi")
-    , ('Χ', "X")
-    , ('ψ', "\\psi")
-    , ('Ψ', "\\Psi")
-    , ('ω', "\\omega")
+  [ ('¬', "\\neg"),
+    ('±', "\\pm"),
+    ('×', "\\times"),
+    ('÷', "\\div"),
+    ('…', "\\dots"),
+    ('ℕ', "\\mathbb{N}"),
+    ('ℚ', "\\mathbb{Q}"),
+    ('ℝ', "\\mathbb{R}"),
+    ('ℤ', "\\mathbb{Z}"),
+    ('ℂ', "\\mathbb{C}"),
+    ('←', "\\leftarrow"),
+    ('↑', "\\uparrow"),
+    ('→', "\\rightarrow"),
+    ('↓', "\\downarrow"),
+    ('↔', "\\leftrightarrow"),
+    ('⇐', "\\Leftarrow"),
+    ('⇒', "\\Rightarrow"),
+    ('⇔', "\\Leftrightarrow"),
+    ('↦', "\\mapsto"),
+    ('∀', "\\forall"),
+    ('∃', "\\exists"),
+    ('∅', "\\emptyset"),
+    ('∈', "\\in"),
+    ('∉', "\\notin"),
+    ('∋', "\\ni"),
+    ('∎', "\\blacksquare"),
+    ('∫', "\\int"),
+    ('∑', "\\sum"),
+    ('√', "\\sqrt"),
+    ('∂', "\\partial"),
+    ('∓', "\\mp"),
+    ('∗', "\\ast"),
+    ('∘', "\\circ"),
+    ('∙', "\\bullet"),
+    ('∝', "\\propto"),
+    ('∞', "\\infty"),
+    ('∥', "\\parallel"),
+    ('∡', "\\measuredangle"),
+    ('∧', "\\land"),
+    ('∨', "\\lor"),
+    ('∩', "\\cap"),
+    ('∪', "\\cup"),
+    ('⌈', "\\lceil"),
+    ('⌉', "\\rceil"),
+    ('⌊', "\\lfloor"),
+    ('⌋', "\\rfloor"),
+    ('⟨', "\\langle"),
+    ('⟩', "\\rangle"),
+    ('∴', "\\therefore"),
+    ('∵', "\\because"),
+    ('≈', "\\approx"),
+    ('≠', "\\neq"),
+    ('≡', "\\equiv"),
+    ('≤', "\\leq"),
+    ('≥', "\\geq"),
+    ('⊂', "\\subset"),
+    ('⊃', "\\supset"),
+    ('⊆', "\\subseteq"),
+    ('⊇', "\\supseteq"),
+    ('⊢', "\\vdash"),
+    ('⊤', "\\top"),
+    ('⊥', "\\bot"),
+    ('⊨', "\\vDash"),
+    ('⋅', "\\cdot"),
+    ('⋮', "\\vdots"),
+    ('⋯', "\\cdots"),
+    ('ℵ', "\\aleph"),
+    ('α', "\\alpha"),
+    ('Α', "A"),
+    ('β', "\\beta"),
+    ('Β', "B"),
+    ('γ', "\\gamma"),
+    ('Γ', "\\Gamma"),
+    ('δ', "\\delta"),
+    ('Δ', "\\Delta"),
+    ('ε', "\\varepsilon"),
+    ('ϵ', "\\epsilon"),
+    ('Ε', "E"),
+    ('ζ', "\\zeta"),
+    ('Ζ', "Z"),
+    ('η', "\\eta"),
+    ('Η', "H"),
+    ('θ', "\\theta"),
+    ('ϑ', "\\vartheta"),
+    ('Θ', "\\Theta"),
+    ('ι', "\\iota"),
+    ('Ι', "I"),
+    ('κ', "\\kappa"),
+    ('ϰ', "\\varkappa"),
+    ('Κ', "K"),
+    ('λ', "\\lambda"),
+    ('Λ', "\\Lambda"),
+    ('μ', "\\mu"),
+    ('Μ', "M"),
+    ('∇', "\\nabla"),
+    ('ν', "\\nu"),
+    ('Ν', "N"),
+    ('ξ', "\\xi"),
+    ('Ξ', "\\Xi"),
+    ('ο', "o"),
+    ('Ο', "O"),
+    ('π', "\\pi"),
+    ('Π', "\\Pi"),
+    ('ρ', "\\rho"),
+    ('ϱ', "\\varrho"),
+    ('Ρ', "P"),
+    ('σ', "\\sigma"),
+    ('ς', "\\varsigma"),
+    ('Σ', "\\Sigma"),
+    ('τ', "\\tau"),
+    ('Τ', "T"),
+    ('υ', "\\upsilon"),
+    ('Υ', "\\Upsilon"),
+    ('φ', "\\varphi"),
+    ('ϕ', "\\phi"),
+    ('Φ', "\\Phi"),
+    ('χ', "\\chi"),
+    ('Χ', "X"),
+    ('ψ', "\\psi"),
+    ('Ψ', "\\Psi"),
+    ('ω', "\\omega"),
     -- Do not switch order of the two "\\Omega" entries! The /last/ one is used
     -- in latexToUnicodeMap, which is what we want.
-    , ('Ω', "\\Omega")
-    , ('Ω', "\\Omega")
-    ]
+    ('Ω', "\\Omega"),
+    ('Ω', "\\Omega")
+  ]

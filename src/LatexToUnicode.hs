@@ -2,17 +2,15 @@
 
 module LatexToUnicode where
 
-import Prelude hiding (lookup)
-
 import Data.Map.Strict (lookup)
 import Data.Text (Text, pack)
+import MathFilter
+import Symbols
 import Text.LaTeX.Base.Parser (parseLaTeX)
 import Text.LaTeX.Base.Render (render)
 import Text.LaTeX.Base.Syntax (LaTeX (..), TeXArg (FixArg))
 import Text.Pandoc.JSON (toJSONFilter)
-
-import MathFilter
-import Symbols
+import Prelude hiding (lookup)
 
 main :: IO ()
 main = toJSONFilter (mathFilter latexToUnicode)

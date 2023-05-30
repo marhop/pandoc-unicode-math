@@ -6,10 +6,9 @@ import Data.Char (isAlphaNum)
 import Data.Map.Strict (findWithDefault, (!?))
 import Data.Text (Text, cons, singleton, snoc, uncons)
 import qualified Data.Text as T
-import Text.Pandoc.JSON (toJSONFilter)
-
 import MathFilter
 import Symbols
+import Text.Pandoc.JSON (toJSONFilter)
 
 main :: IO ()
 main = toJSONFilter (mathFilter unicodeToLatex)
@@ -31,7 +30,7 @@ unicodeToLatex = T.foldr f ""
     f :: Char -> Text -> Text
     f x acc
       | Just (y, ys) <- uncons acc =
-        maybe (x `cons` acc) (<> isolate y <> ys) (unicodeToLatexMap !? x)
+          maybe (x `cons` acc) (<> isolate y <> ys) (unicodeToLatexMap !? x)
       | otherwise = findWithDefault (singleton x) x unicodeToLatexMap
     isolate :: Char -> Text
     isolate x
