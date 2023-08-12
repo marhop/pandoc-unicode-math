@@ -9,24 +9,25 @@ Unicode!
 ## What does this filter do?
 
 This [Pandoc] [filter] replaces Unicode math symbols and greek letters like ∀,
-∈, →, λ, or Ω in math environments by equivalent Latex commands like
-`\forall`, `\in`, `\rightarrow`, `\lambda`, or `\Omega`. That means you can
+∈, →, λ, or Ω *in math environments* (i.e., between single or double dollar
+signs for inline or display math, respectively) by equivalent Latex commands
+like `\forall`, `\in`, `\rightarrow`, `\lambda`, or `\Omega`. That means you can
 write expressions like these in Markdown and still get Latex's superior math
 typesetting when converting to PDF:
 
-    α → β ≡ ¬α ∨ β ≡ ¬(α ∧ ¬β)
+    $$α → β ≡ ¬α ∨ β ≡ ¬(α ∧ ¬β)$$
 
-    ∀ x ∈ \{ 2, 4, … \}, ∀ y ∈ ℕ : (x ⋅ y) mod 2 = 0
+    $$∀ x ∈ \{ 2, 4, … \}, ∀ y ∈ ℕ : (x ⋅ y) mod 2 = 0$$
 
-    ℕ ⊂ ℤ ⊂ ℝ
+    $$ℕ ⊂ ℤ ⊂ ℝ$$
 
 Now compare them to the same expressions written with Latex commands:
 
-    \alpha \rightarrow \beta \equiv \neg \alpha \lor \beta \equiv \neg (\alpha \land \neg \beta)
+    $$\alpha \rightarrow \beta \equiv \neg \alpha \lor \beta \equiv \neg (\alpha \land \neg \beta)$$
 
-    \forall x \in \{ 2, 4, \dots \}, \forall y \in \mathbb{N} : (x \cdot y) mod 2 = 0
+    $$\forall x \in \{ 2, 4, \dots \}, \forall y \in \mathbb{N} : (x \cdot y) mod 2 = 0$$
 
-    \mathbb{N} \subset \mathbb{Z} \subset \mathbb{R}
+    $$\mathbb{N} \subset \mathbb{Z} \subset \mathbb{R}$$
 
 If you prefer the Unicode variant, this filter is for you!
 
@@ -42,8 +43,8 @@ A complete list of symbols that are replaced by this filter can be found in the
     choose a release that matches your Pandoc version (otherwise you'll get an
     error like `Incompatible API versions: encoded with [1,20] but attempted to
     decode with [1,21].`). If necessary, you can build from source (see below).
- 2. Write a Markdown document containing Unicode characters like the provided
-    [example file](example.md).
+ 2. Write a Markdown document containing Unicode characters in a math
+    environment like the provided [example file](example.md).
  3. Invoke Pandoc to convert the Markdown document to PDF and apply the filter
     along the way:
 
