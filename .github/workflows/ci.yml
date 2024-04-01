@@ -4,7 +4,7 @@ on: workflow_dispatch
 
 jobs:
   build:
-    name: ${{ matrix.os }}, ghc ${{ matrix.ghc }}, pandoc-types ${{ matrix.pandoc-types }}
+    name: Build on ${{ matrix.os }} with GHC ${{ matrix.ghc }} and pandoc-types ${{ matrix.pandoc-types }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -13,13 +13,14 @@ jobs:
         cabal: ["3.8.1.0"]
         pandoc-types: ["1.20", "1.21", "1.22", "1.23"]
     steps:
-      - uses: actions/checkout@v3
-      - uses: haskell/actions/setup@v2
+      - uses: actions/checkout@v4
+      - uses: haskell-actions/setup@v2
         with:
           ghc-version: ${{ matrix.ghc }}
           cabal-version: ${{ matrix.cabal }}
-      - run: cabal install --installdir bin --constraint 'pandoc-types ^>= ${{ matrix.pandoc-types }}'
-      - uses: actions/upload-artifact@v3
+      - run: cabal install -O2 --installdir bin --constraint 'pandoc-types ^>= ${{ matrix.pandoc-types }}'
+      - run: tar -czf pandoc-unicode-math_${{ runner.os }}_pandoc_types-${{ matrix.pandoc-types }}.tar.gz --dereference -C bin .
+      - uses: actions/upload-artifact@v4
         with:
           name: pandoc-unicode-math_${{ runner.os }}_pandoc-types-${{ matrix.pandoc-types }}
-          path: ./bin
+          path: pandoc-unicode-math_${{ runner.os }}_pandoc-types-${{ matrix.pandoc-types }}.tar.gz
