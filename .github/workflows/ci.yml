@@ -19,7 +19,7 @@ jobs:
           ghc-version: ${{ matrix.ghc }}
           cabal-version: ${{ matrix.cabal }}
       - run: cabal install -O2 --installdir bin --constraint 'pandoc-types ^>= ${{ matrix.pandoc-types }}'
-      - run: tar -czf pandoc-unicode-math_${{ runner.os }}_pandoc_types-${{ matrix.pandoc-types }}.tar.gz --dereference -C bin .
+      - run: tar -czf pandoc-unicode-math_${{ runner.os }}_pandoc-types-${{ matrix.pandoc-types }}.tar.gz --dereference -C bin .
       - uses: actions/upload-artifact@v4
         with:
           name: pandoc-unicode-math_${{ runner.os }}_pandoc-types-${{ matrix.pandoc-types }}
